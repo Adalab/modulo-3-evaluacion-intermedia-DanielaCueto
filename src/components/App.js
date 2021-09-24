@@ -23,10 +23,7 @@ function App() {
       </p>
     </li>
   ));
-  // const handleNewClub = (ev) => {
-  //   const inputValue = ev.currentTarget.value;
-  //   console.log(inputValue);
-  // };
+
   const handleTextChange = (ev) => {
     const inputValue = ev.currentTarget.value;
     setTextInput(inputValue);
