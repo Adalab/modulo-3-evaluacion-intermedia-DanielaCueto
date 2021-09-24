@@ -1,0 +1,35 @@
+.book__list {
+  box-sizing: border-box;
+  padding: 2rem;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.item {
+  border: 3px solid black;
+  text-align: start;
+  padding-bottom: 1rem;
+
+  &__title {
+    font-weight: bold;
+  }
+}
+
+.formulary {
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 200px 200px 200px;
+}
+.button {
+  background-color: lightgreen;
+  color: white;
+  border: 0;
+  padding: 0.5rem;
+  width: 15rem;
+  text-align: center;
+  margin: auto;
+  border-radius: 12px;
+}
