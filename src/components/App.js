@@ -5,7 +5,10 @@ import { useState } from "react";
 function App() {
   //poner los listados en el estado de REACT
   const [clubs, setClubs] = useState(dataArray);
-  //console.log(dataArray);
+  const [textInput, setTextInput] = useState("");
+  const [weekInput, setWeekInput] = useState(false);
+  const [weekendInput, setWeekendInput] = useState(false);
+
   //Pintar el listado de clubs inicial.
   const htmlList = clubs.map((oneData, i) => (
     <li key={i} className="book__item item">
@@ -20,9 +23,36 @@ function App() {
       </p>
     </li>
   ));
-  const handleNewClub = (ev) => {
+  // const handleNewClub = (ev) => {
+  //   const inputValue = ev.currentTarget.value;
+  //   console.log(inputValue);
+  // };
+  const handleTextChange = (ev) => {
     const inputValue = ev.currentTarget.value;
-    console.log(inputValue);
+    setTextInput(inputValue);
+  };
+  const handleWeek = (ev) => {
+    const inputValue = ev.currentTarget.checked;
+    setWeekInput(inputValue);
+  };
+  const handleWeekend = (ev) => {
+    const inputValue = ev.currentTarget.checked;
+    setWeekendInput(inputValue);
+  };
+
+  const handleNewClub = (ev) => {
+    //primero creo el objeto
+    const newClub = {
+      name: textInput,
+      openOnWeekdays: weekInput,
+      openOnWeekend: weekendInput,
+    };
+
+    //añado el objeto a la lista de clubs
+    clubs.push(newClub);
+
+    // digo a react que la lista de clubs cambio
+    setClubs([...clubs]);
   };
 
   return (
@@ -33,12 +63,12 @@ function App() {
       <ul className="book__list">{htmlList}</ul>
       <form className="formulary">
         <label htmlFor="text">Nombe del club</label>
-        <input type="text" name="text" />
+        <input onChange={handleTextChange} type="text" name="text" />
         <label htmlFor="checkbox">¿Abre entre semana?</label>
-        <input type="checkbox" />
+        <input onChange={handleWeek} type="checkbox" />
         <label htmlFor="checkbox">¿Abre los fines de semana?</label>
-        <input type="checkbox" />
-        <button onClick={handleNewClub} className="button">
+        <input onChange={handleWeekend} type="checkbox" />
+        <button type="button" onClick={handleNewClub} className="button">
           Añadir un nuevo club
         </button>
       </form>
